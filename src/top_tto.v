@@ -3,11 +3,16 @@
 module tomkeddie_top_tto_a
   #(parameter CLOCK_RATE=1000)
   (
-   input [7:0]  io_in,
-   output [7:0] io_out
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,
+    input  wire       clk,
+    input  wire       rst_n
    );
 
-  wire          clk;
   wire          rst;
   wire          red; 
   wire          blue;
@@ -21,19 +26,21 @@ module tomkeddie_top_tto_a
   wire          uart_data;
   wire          mode;
 
-  assign io_out[0] = red;
-  assign io_out[1] = blue;
-  assign io_out[2] = b;
-  assign io_out[3] = blank;
-  assign io_out[4] = green;
-  assign io_out[5] = a;
-  assign io_out[6] = sclk;
-  assign io_out[7] = latch;
+  assign uo_out[0] = red;
+  assign uo_out[1] = blue;
+  assign uo_out[2] = b;
+  assign uo_out[3] = blank;
+  assign uo_out[4] = green;
+  assign uo_out[5] = a;
+  assign uo_out[6] = sclk;
+  assign uo_out[7] = latch;
+  assign uio_out  = 8'b00000000;
+  assign uio_oe   = 8'b00000000;
 
-  assign clk       = io_in[0];
-  assign rst       = io_in[1];
-  assign uart_data = io_in[2];
-  assign mode      = io_in[3];
+  assign rst       = !rst_n;
+  assign uart_data = ui_in[0];
+  assign mode      = ui_in[1];
+
 
   // instantiate the component
   led_panel_single top(.clk(clk),
