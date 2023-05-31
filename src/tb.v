@@ -8,19 +8,19 @@
 
 module tb (
            // testbench is controlled by test.py
-	        input       clk,
-            input       reset,
-            input       uart_tx_dv,
-            input [7:0] uart_tx_data,
-            output      red,
-            output      blue,
-            output      blank,
-            output      green,
-            output      sclk,
-            output      latch,
-            output      a,
-            output      b,
-            output      uart_tx_done
+	        input        clk,
+            input        reset,
+            input        uart_tx_dv,
+            input [7:0]  uart_tx_data,
+            output [1:0] red,
+            output [1:0] blue,
+            output       blank,
+            output [1:0] green,
+            output       sclk,
+            output       latch,
+            output       a,
+            output       b,
+            output       uart_tx_done
            );
 
   // this part dumps the trace to a vcd file that can be viewed with GTKWave

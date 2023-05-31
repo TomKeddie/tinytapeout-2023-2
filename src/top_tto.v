@@ -14,10 +14,10 @@ module tt_um_tomkeddie_a
    );
 
   wire          rst;
-  wire          red; 
-  wire          blue;
+  wire [1:0]    red; 
+  wire [1:0]    blue;
+  wire [1:0]    green; 
   wire          blank;
-  wire          green;
   wire          sclk;
   wire          latch;
   wire [2:0]    rowmax;
@@ -26,16 +26,19 @@ module tt_um_tomkeddie_a
   wire          uart_data;
   wire          mode;
 
-  assign uo_out[0] = red;
-  assign uo_out[1] = blue;
+  assign uo_out[0] = red[0]
+  assign uo_out[1] = blue[0]
   assign uo_out[2] = b;
   assign uo_out[3] = blank;
-  assign uo_out[4] = green;
+  assign uo_out[4] = green[0]
   assign uo_out[5] = a;
   assign uo_out[6] = sclk;
   assign uo_out[7] = latch;
-  assign uio_out  = 8'b00000000;
-  assign uio_oe   = 8'b00000000;
+  assign uio_out[0] = red[1];
+  assign uio_out[1] = blue[1];
+  assign uio_out[2] = green[1];
+  assign uio_out[7:3] = 8'b00000000;
+  assign uio_oe       = 8'b00000111;
 
   assign rst       = !rst_n;
   assign uart_data = ui_in[0];

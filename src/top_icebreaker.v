@@ -1,17 +1,17 @@
 module top
-  #(parameter DIVIDER=1000, DELAY_BIT=15)
+  #(parameter DELAY_BIT=15)
   (
    input  CLK,
    input  BTN_N,
-   output P2_1,
-   output P2_2,
+   input  P2_1,
+   input  P2_2,
    output P2_3,
    output P2_4,
    output P2_7,
    output P2_8,
    output P2_9,
    output P2_10,
-   input P1A1,
+   output P1A1,
    output P1A2,
    output P1A3,
    output P1A4,
@@ -19,7 +19,7 @@ module top
    output P1A8,
    output P1A9,
    output P1A10,
-   input  P1B1,
+   output P1B1,
    output P1B2,
    output P1B3,
    output P1B4,
@@ -29,17 +29,16 @@ module top
    output P1B10
    );
 
-  reg     clk_dut;
-  wire    red;
-  wire    blue;
-  wire    blank;
-  wire    green;
-  wire    sclk;
-  wire    latch;
-  wire    a;
-  wire    b;
+  wire       clk_dut;
+  wire [1:0] red;
+  wire [1:0] blue;
+  wire [1:0] green;
+  wire       blank;
+  wire       sclk;
+  wire       latch;
+  wire       a;
+  wire       b;
 
-  reg [15:0] clk_divide_counter;
   reg [15:0]   rst_delay_counter;
   wire         rst;
   wire         unused;
@@ -53,31 +52,20 @@ module top
 
   // wire up the inputs and outputs
   assign rst = ~BTN_N;
-  assign P2_1 = red;
-  assign P2_2 = blue;
-  assign P2_3 = b;
-  assign P2_4 = blank;
-  assign P2_7 = green;
-  assign P2_8 = a;
-  assign P2_9 = sclk;
-  assign P2_10 = latch;
-  assign uart_data = P1B1;
-  assign mode = P1A1;
-
-  // clock divider
-  always @(posedge CLK) begin
-    begin
-      if (rst == 1'b1) begin
-		clk_dut <= 1'b0;
-		clk_divide_counter <= 0;
-	  end else if (clk_divide_counter == DIVIDER) begin
-        clk_dut     <= !clk_dut;
-		clk_divide_counter <= 0;
-      end else begin
-        clk_divide_counter <= clk_divide_counter + 1;
-      end
-    end
-  end
+  assign P1A1 = red[0];
+  assign P1A2 = blue[0];
+  assign P1A3 = b;
+  assign P1A4 = blank;
+  assign P1A7 = green[0];
+  assign P1A8 = a;
+  assign P1A9 = sclk;
+  assign P1A10 = latch;
+  assign P1B1 = red[1];
+  assign P1B2 = blue[1];
+  assign P1B7 = green[1];
+  assign uart_data = P2_1;
+  assign mode = 1'b0; // P2_2;
+  assign clk_dut = CLK;
 
   // reset delay
   always @(posedge CLK) begin
