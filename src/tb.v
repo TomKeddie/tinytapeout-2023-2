@@ -35,6 +35,14 @@ module tb (
     $dumpvars (0, tb.top.frame_buffer[5]);
     $dumpvars (0, tb.top.frame_buffer[6]);
     $dumpvars (0, tb.top.frame_buffer[7]);
+    $dumpvars (0, tb.top.frame_buffer[8]);
+    $dumpvars (0, tb.top.frame_buffer[9]);
+    $dumpvars (0, tb.top.frame_buffer[10]);
+    $dumpvars (0, tb.top.frame_buffer[11]);
+    $dumpvars (0, tb.top.frame_buffer[12]);
+    $dumpvars (0, tb.top.frame_buffer[13]);
+    $dumpvars (0, tb.top.frame_buffer[14]);
+    $dumpvars (0, tb.top.frame_buffer[15]);
     #1;
   end
 

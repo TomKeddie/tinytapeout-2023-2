@@ -348,16 +348,14 @@ module led_panel_single (
         UDS_SET,UDS_CLR:  begin
           if (uart_rx_dv == 1'b1) begin
             uart_data_state <= UDS_CTRL;
-            if (uart_rx_data != 8'hff) begin
-              case(uart_data_state)
-                UDS_SET: begin
-                  frame_buffer[uart_rx_data[7:4]][uart_rx_data[3:0]] <= 1'b1;
+            case(uart_data_state)
+              UDS_SET: begin
+                frame_buffer[uart_rx_data[7:4]][uart_rx_data[3:0]] <= 1'b1;
+              end
+              UDS_CLR: begin
+                frame_buffer[uart_rx_data[7:4]][uart_rx_data[3:0]] <= 1'b0;
                 end
-                UDS_CLR: begin
-                  frame_buffer[uart_rx_data[7:4]][uart_rx_data[3:0]] <= 1'b0;
-                end
-              endcase
-            end
+            endcase
           end
         end
       endcase

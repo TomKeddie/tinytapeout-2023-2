@@ -30,24 +30,23 @@ documentation:
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-        * The circuit updates half of a P10 16x16 LED display module
-        * It initially displays the string TT03
-        * It provides a 600baud uart input to
+        * The circuit updates a P10 16x16 LED display module
+        * It initially displays the string TT03P5
+        * It provides a 1.2Mbaud uart input to
           - paint pixels
           - erase pixels
           - clear the display
           - change the displayed colour
-        * Functionality is limited by resource availability and clock rate
+        * Functionality is limited by resource availability
           - single colour at once
           - no double buffer, updates may have artifacts
-          - refresh rate is low, some flicker is observed (16*8=128 pixels at 6kHz is ~46Hz, plus overhead)
         * Mode pin to allow for 2 different clocking patterns
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
         * Connect the display module as per the outputs
         * Connect the uart
-        * Power on and see the TT03 text
+        * Power on and see the TT03P5 text
         * If the display is swapped by quadrant change the mode pin
         * Use the script(s) in the software directory to control the display
 
@@ -88,5 +87,5 @@ documentation:
   external_hw:  "led panel, level converter to 5V logic"      # Describe any external hardware needed
   discord:      "TomKeddie#7070"
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
-  clock_hz:     6000    # Clock frequency in Hz (12kHZ update rate)
+  clock_hz:     12000000    # Clock frequency in Hz
   picture:      "doc/2023-04-15_07-18-57.jpg"      # relative path to a picture in your repository

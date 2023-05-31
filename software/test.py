@@ -21,7 +21,7 @@ def pixel_clr(ser, ix, iy):
 
 ser = serial.Serial(
 	port='/dev/ftdi5',
-	baudrate=600
+	baudrate=1200000
 )
 
 # reset
@@ -31,38 +31,38 @@ ser.write(b"\xff\xff")
 ser.write(b"\x30")
 
 # colour blue
-ser.write(b"\x03")
+ser.write(b"\x01")
 
 # across the top
 iy=0
 for ix in range(16):
     pixel_set(ser, ix, iy)
-    time.sleep(0.25)
+    time.sleep(0.1)
     pixel_clr(ser, ix, iy)
 
 # down the left side
-for iy in range(1, 8, 1):
+for iy in range(1, 16, 1):
     pixel_set(ser, ix, iy)
-    time.sleep(0.25)
+    time.sleep(0.1)
     pixel_clr(ser, ix, iy)
     
 # across the bottom
 for ix in range(14, -1, -1):
     pixel_set(ser, ix, iy)
-    time.sleep(0.25)
+    time.sleep(0.1)
     pixel_clr(ser, ix, iy)
 
 # up the right side
-for iy in range(6, 0, -1):
+for iy in range(14, 0, -1):
     pixel_set(ser, ix, iy)
-    time.sleep(0.25)
+    time.sleep(0.1)
     pixel_clr(ser, ix, iy)
 
 # all pixels
-for iy in range(8):
+for iy in range(16):
     for ix in range(16):
         pixel_set(ser, ix, iy)
-        time.sleep(0.25)
+        time.sleep(0.1)
         pixel_clr(ser, ix, iy)
 
     

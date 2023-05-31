@@ -44,7 +44,7 @@ async def top(dut):
     await ClockCycles(dut.clk, 1)
     dut.uart_tx_dv.value = 0
     await FallingEdge(dut.uart_tx_done)
-    dut.uart_tx_data.value = 0xf7
+    dut.uart_tx_data.value = 0xff
     dut.uart_tx_dv.value = 1
     await ClockCycles(dut.clk, 1)
     dut.uart_tx_dv.value = 0
@@ -57,7 +57,7 @@ async def top(dut):
     await ClockCycles(dut.clk, 1)
     dut.uart_tx_dv.value = 0
     await FallingEdge(dut.uart_tx_done)
-    dut.uart_tx_data.value = 0xf7
+    dut.uart_tx_data.value = 0xff
     dut.uart_tx_dv.value = 1
     await ClockCycles(dut.clk, 1)
     dut.uart_tx_dv.value = 0
