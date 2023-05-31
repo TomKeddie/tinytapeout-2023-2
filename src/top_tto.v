@@ -26,11 +26,11 @@ module tt_um_tomkeddie_a
   wire          uart_data;
   wire          mode;
 
-  assign uo_out[0] = red[0]
-  assign uo_out[1] = blue[0]
+  assign uo_out[0] = red[0];
+  assign uo_out[1] = blue[0];
   assign uo_out[2] = b;
   assign uo_out[3] = blank;
-  assign uo_out[4] = green[0]
+  assign uo_out[4] = green[0];
   assign uo_out[5] = a;
   assign uo_out[6] = sclk;
   assign uo_out[7] = latch;
