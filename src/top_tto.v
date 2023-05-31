@@ -1,6 +1,6 @@
 `default_nettype none
 
-module tomkeddie_top_tto_a
+module tt_um_tomkeddie_a
   #(parameter CLOCK_RATE=1000)
   (
     input  wire [7:0] ui_in,    // Dedicated inputs

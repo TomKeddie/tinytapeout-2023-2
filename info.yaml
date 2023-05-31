@@ -9,7 +9,7 @@ project:
     - top_tto.v
     - led_panel_single.v
     - uart_rx.v
-  top_module:  "tomkeddie_top_tto_a"
+  top_module:  "tt_um_tomkeddie_a"
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
 # Before changing this, please reach out to us on discord to discuss your design.
