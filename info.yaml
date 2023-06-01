@@ -62,20 +62,20 @@ documentation:
     - none
 # A description of what the outputs do
   outputs:
-    - red
-    - blue
+    - red0
+    - blue0
     - b
     - blank
-    - green
+    - green0
     - a
     - clk
     - latch
 
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - none
-    - none
-    - none
+    - red1
+    - blue1
+    - green1
     - none
     - none
     - none
